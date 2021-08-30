@@ -371,6 +371,13 @@ a:hover, a:active {
     padding-right: 10%
 }
 
+/*--------------------------------------------------------------
+# FaceMesh
+--------------------------------------------------------------*/
+.facemesh-text{
+    text-align: center;
+    padding-bottom: 10%
+}
 /* .grey{
     background-color: #595959;
 } */
