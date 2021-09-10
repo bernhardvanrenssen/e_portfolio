@@ -71,13 +71,37 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Project #2</h1>
+                        <h1>Investigation of Features of Autodesk Revit as a Software</h1>
+                        <h2>Entry 3</h2>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter first entry/task here </p>
-                    </div><!-- .entry-content -->
-
+                        <p>Revit (developed by Autodesk) is a BIM (Building Information Modelling) software for architects and engineers. It is an example of a CAD (Computer Aided Design) software that facilitates 3D and 2D design, allowing users to design buildings and structures along with 3D components as well as 2D annotation and drafting tools. The software is capable to design and document every step of the building construction lifecycle and is thus considered to be a 4D BIM tool (Graves, 2021). </p>
+                        <p>According to the IEEE, the term ‘software feature’ is defined as: “A distinguishing characteristic of a software item (e.g., performance, portability, or functionality)” (IEEE, n.d.). Revit has evolved since its inception in 2000 into a software package with numerous features that define the tools that users need to build and document their projects in both 3D models and 2D sheets. These components have evolved into a complex structure of elements as seen in the BIM schema diagram below (UML format):</p>
+                        <img src="images/LCS_3/img_1.png" alt="">
+                        <p>In general, the BIM model features (tools) present in Revit can be broken down into one of three categories namely:</p>
+                        <li><span style="color: #ffbb00"><strong>Geometric Information – </strong></span>The vertices, edges and any other geometrical features that define the parts of the 3D building components. These tools include all the 3D and 2D building elements like: Walls, Floors, Roofs, 3D components and any other tool that defines 3D elements within the workspace, as well as annotation lines, text, dimensions etc. (Examples of 3D features in the below image)</li>
+                        <img src="images/LCS_3/img_2.png" alt="">
+                        <p>These features (amongst others) can be used to construct the 3D model as below: </p>
+                        <img src="images/LCS_3/img_3.png" alt="">
+                        <p>Examples of 2D features:</p>
+                        <img src="images/LCS_3/img_4.png" alt="">
+                        <p>These features can be used to construct and annotate 2D plans resulting in drawings that the user can print and send to the contractor – as an example:</p>
+                        <img src="images/LCS_3/img_5.png" alt="">                    </div><!-- .entry-content -->
+                        <li><span style="color: #0084ff"><strong>Spatial Information</strong></span> – Elaborates on the specific location and relative position and spatial relationships between elements. These are modifying tools and features that allow the user to move, copy, rotate, edit etc. the elements that are already placed within the workspace. These tools are commonly found in the ‘Modify” tab of Revit’ ribbon, and interacting with these tools will call functions that run the code of the Spatial Information type, typically:</li>
+                        <img src="images/LCS_3/img_6.png" alt="">
+                        <li><span style="color: #ff7b00"><strong>Functional Information</strong></span> – Relates to additional attributes or properties that infer information that describes the environment of the building element such as the host information (element contained within another element). These groups are identified as families (or classes). Namely, the geometric information is stored within the ’GeometryObject’ family, the spatial information can be found in the ’Location’ family, and the functional information is spread out between the ’HostObject’, ’Instance’, and ’ElementType’ families. The exact building element information structure for each family and its categories and properties can be extracted according to the class diagram.</li>
+                        <br>
+                        <p>Within these different class types, Autodesk Revit is a software consisting of modules that define all the tools and features required to model and document any project, developed as an object-oriented system. Revit further publicly exposed its API to allow users to program their own functions and tools with Python or C# functions. These tools can be introduced into Revit in the form of a plugin, and many software that relate to the building industry have developed plugins that export the 3D built elements in a universal 3D format (such as .fbx, .obj or .gltf) and import these geometries along with data such as material information, elementIDs and any other relative metadata required for import into the relevant program. </p>
+                        <p>As an example, Unreal Engine’s TwinMotion is a rendering engine that takes in 3D models and focuses on producing photorealisting renders by applying PBR (Physical Based Rendering) materials on the building elements. TwinMotion has a plugin that ensures that there is a live connection between Revit and TwinMotion, allowing the user to see their latest changes in real-time on the render. The plugin is written in C#, that connects with the Revit API, exporting the model in an .FBX format, and passing this geometry and material data directly to TwinMotion. Below is an example of the LiveSync functionality (Revit 3D model on the left, TwinMotion live feed on the right):</p>
+                        <img src="images/LCS_3/img_7.png" alt="">
+                        <p>Overall, Revit is a versatile BIM software that has developed numerous features over its lifecycle that build and document a building throughout its lifecycle, and through its public API has allowed numerous 3rd party softwares to add to the value of the software itself. The modular manner in which the software is written allow for constant feature updates and allow for the introduction of new tools on every update. </p>
+                        <br>
+                        <p><h3>REFERENCES </h3><br>
+                            Graves, M., 2021. Architecture and the Lost Art of Drawing. The New York Times. <br>
+                            IEEE, n.d. Std 829-1998. 
+                            
+                            </p>
                     <div class="post-share flex align-items-center">
                         <!-- <label>share:</label> -->
 
@@ -96,17 +120,17 @@
                     <div class="posted-date">
                         <label>Date</label>
 
-                        <span class="date-format"><a href="#">Date completed</a></span>
+                        <span class="date-format"><a href="#">10 September 2021</a></span>
                     </div><!-- .posted-date -->
 
                     <div class="post-category">
                         <label>Project Type</label>
-                        <span><a href="#">Type</a></span>
+                        <span><a href="#">Analysis of Software System</a></span>
                     </div><!-- .post-category -->
 
                     <div class="posted-tags">
                         <label>tags</label>
-                        <span><a href="#">tags</a><a href="#"></a><a href="#"></a> </span>
+                        <span><a href="#">analysis, Revit, UML</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
@@ -118,7 +142,7 @@
                     <ul class="flex justify-content-between align-items-center">
                         <li><a href="lcs_2.html"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="#"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="lcs_4.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->
