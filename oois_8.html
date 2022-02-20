@@ -71,13 +71,40 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Project #2</h1>
+                        <h1>Mid-Module Assignment: System Design</h1>
+                        <h4>DESIGN OF A SYSTEM TO MANAGE SELF-SERVICE CHECKOUT AT A WELL-KNOWN STREET SUPERMARKET</h4>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter first entry/task here </p>
-                    </div><!-- .entry-content -->
+                        <p>I started out by designing the classes that were put forward as the customer's requirement. This was then followed by a figure on the 
+                            relationships between the classes, to map out how the information would flow through the system:
+                        </p>
+                        <img class="col-lg-12" src="images/OOIS/oois_6.jpg" alt="">
+                        <br>
+                        <p>The class and relationships are summarized below:</p>
+                        <p>
+                            A.	Composition - Each customer has only 1 Loyalty Schema, which will be destroyed when the instance of the Customer class is destroyed <br>
+                            B.	Association - The LoyaltySchema class will determine the amount and operations on calculating the amount of LoyaltyPoints. <br>
+                            C.	Aggregation - ShoppingBasket exists of 1 to many Products, which will still exist if the ShoppingBasket is destroyed. <br>
+                            D.	Inheritance - Each PaymentMethod class (Apple Pay, Android Pay, Cash, Card etc.) inherits from the parent Payment class, but each child class also has a unique method to authorize payments. <br>
+                            E.	Aggregation - A transaction consists of 1 or more Payment instances. <br>
+                            F.	Aggregation - a Transaction also requires 1 ShoppingBasket <br>
+                            G.	Association – a Staff instance can manually perform certain operations on a Transaction <br>
+                            H.	Association – Staff will be alerted on any issue raised by StockControl, and will be able to perform certain operations on this class <br>
+                            I.	Association – After a Transaction is completed, points will be assigned to a customer’s LoyaltySchema <br>
+                            J.	Aggregation – StockControl manages operations on all Products. <br>
+                            </p>
+                        <p><strong>Following the set-out of classes and relationships, I added the class methods and diagrams to build the final UML diagram:</strong></p>
+                        <img class="col-lg-12" src="images/OOIS/oois_7.jpg" alt="">
 
+                        <p><strong>Feedback:</strong></p>
+                        <p>The classes are well chosen and show a good understanding of the material. You have drawn them exclusively from the scenario without adding extra 
+                            details, which is good. <br>
+                            A good use of relationships to tie the system together. 	
+                            Well-chosen states and behaviours that have the appropriate types.
+                            A good use of inheritance and composition
+                            Well-presented and great use of the notation throughout.</p>
+                        </div>
                     <div class="post-share flex align-items-center">
                         <!-- <label>share:</label> -->
 
@@ -96,17 +123,17 @@
                     <div class="posted-date">
                         <label>Date</label>
 
-                        <span class="date-format"><a href="#">Date completed</a></span>
+                        <span class="date-format"><a href="#">17 January 2022</a></span>
                     </div><!-- .posted-date -->
 
                     <div class="post-category">
                         <label>Project Type</label>
-                        <span><a href="#">Type</a></span>
+                        <span><a href="#">Mid-Module Assignment: Systems Design</a></span>
                     </div><!-- .post-category -->
 
                     <div class="posted-tags">
                         <label>tags</label>
-                        <span><a href="#">tags</a><a href="#"></a><a href="#"></a> </span>
+                        <span><a href="#">System Design, UML Class Diagram</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
@@ -116,9 +143,9 @@
             <div class="col">
                 <nav class="post-nav">
                     <ul class="flex justify-content-between align-items-center">
-                        <li><a href="lcs_5.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="oois_7.html"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="#"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="oois_9.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->

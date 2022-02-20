@@ -71,11 +71,167 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Project #2</h1>
+                        <h1>Codio excercises on Object-Oriented Programming</h1>
+                        <h4>Python Excercise - CLASSES</h4>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter first entry/task here </p>
+                        <p>A Coding excercise to learn how to build code in Objects and adding attributes to the classes</p>
+                        <p><code><pre>
+import math
+import copy
+
+class Point:
+  """Represents a point in 2D space"""
+
+p = Point()
+p.x = 3.0
+p.y = 5.0
+
+q = Point()
+q.x = 150
+q.y = 14
+
+cir = Point()
+cir.x = 150
+cir.y = 100
+
+class Rectangle:
+  """Defines a rectangle with start, width, height"""
+
+rect = Rectangle()
+rect.start = Point()
+rect.start.x = 0
+rect.start.y = 0
+rect.width = 100
+rect.height = 20
+
+box = Rectangle()
+box.width = 100.0
+box.height = 200.0
+box.start = Point()
+box.start.x = 50.0
+box.start.y = 50.0
+
+def print_point(p):
+  print('(%g, %g)' % (p.x, p.y))
+
+
+def distance_between_points(p1, p2):
+  dx = p1.x - p2.x
+  dy = p1.y - p2.y
+  dist = math.sqrt(dx**2 + dy**2)
+  return dist
+
+#print(distance_between_points(p, q))
+
+
+class Circle:
+  """Represents a circle with attributes: center and radius"""
+
+c = Circle()
+c.center = Point()
+c.center.x = 150
+c.center.y = 100
+c.radius = 75
+
+def point_in_circle(point, circle):
+  d = distance_between_points(point, c.center)
+  print(d)
+  return d <= c.radius
+
+#print(point_in_circle(cir,c))
+
+def rect_in_circle(circle, rect):
+  p = copy.copy(rect.start)
+  print_point(p)
+  if not point_in_circle(p, circle):
+    return False
+
+  p.x += rect.width
+  print_point(p)
+  if not point_in_circle(p, circle):
+    return False
+
+  p.y -= rect.height
+  print_point(p)
+  if not point_in_circle(p, circle):
+    return False
+
+  p.x -= rect.width
+  print_point(p)
+  if not point_in_circle(p, circle):
+    return False
+
+  return True
+
+#print(rect_in_circle(c, box))
+
+def rect_circle_overlap(circle, rect):
+  p = copy.copy(rect.start)
+  if point_in_circle(p, circle):
+    return True
+
+  p.x += rect.width
+  if point_in_circle(p, circle):
+    return True
+
+  p.y -= rect.height
+  print_point(p)
+  if point_in_circle(p, circle):
+    retur
+  p.x -= rect.width
+  print_point(p)
+  if point_in_circle(p, circle):
+    retur
+  return
+#rect_circle_overlap(c, box)
+                        </pre>
+                        </code></p>
+                    </div><!-- .entry-content -->
+
+                    <div class="entry-content">
+                        <p>A Coding excercise on Property Decorators</p>
+                        <p><code><pre>
+class Cyclist:
+def __init__(self, name, nationality, nickname):
+  self._name = name
+  self._nationality = nationality
+  self._nickname = nickname
+  
+@property
+def name(self):
+  return self._name
+
+@name.setter
+def name(self, new_name):
+  self._name = new_name
+  
+@property
+def nationality(self):
+  return self.name
+
+@nationality.setter
+def nationality(self, new_nationality):
+  self._nationality = new_nationality
+   
+@property
+def nickname(self):
+  return self._nickname
+
+@nickname.setter
+def nickname(self, new_nickname):
+  self._nickname = new_nickname
+  
+my_cyclist = Cyclist("Greg LeMond", "American", "Le Montstre")
+
+my_cyclist.name = "Eddy Merckx"
+my_cyclist.nationality = "Belgian"
+my_cyclist.nickname = "The Cannibal"
+
+print(my_cyclist.nationality)
+                        </pre>
+                        </code></p>
                     </div><!-- .entry-content -->
 
                     <div class="post-share flex align-items-center">
@@ -96,17 +252,17 @@
                     <div class="posted-date">
                         <label>Date</label>
 
-                        <span class="date-format"><a href="#">Date completed</a></span>
+                        <span class="date-format"><a href="#">5 December 2021</a></span>
                     </div><!-- .posted-date -->
 
                     <div class="post-category">
                         <label>Project Type</label>
-                        <span><a href="#">Type</a></span>
+                        <span><a href="#">Coding Excercise</a></span>
                     </div><!-- .post-category -->
 
                     <div class="posted-tags">
                         <label>tags</label>
-                        <span><a href="#">tags</a><a href="#"></a><a href="#"></a> </span>
+                        <span><a href="#">Coding, Object-oriented programming, codio</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
@@ -116,9 +272,9 @@
             <div class="col">
                 <nav class="post-nav">
                     <ul class="flex justify-content-between align-items-center">
-                        <li><a href="lcs_5.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="oois_1.html"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="#"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="oois_3.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->

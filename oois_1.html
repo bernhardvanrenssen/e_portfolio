@@ -71,12 +71,110 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Project #1</h1>
+                        <h1>Collaborative Discussion 1: Information System Failure</h1>
+                        <h4>Unit 1 - Unit 3</h4>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter first entry/task here </p>
+                        <p><strong>My Initial Post:</strong></p>
+                        <p>In 1996, the Ariane 5 rocket was launched from the French Guianian coast. The flight lasted for a total of 37 seconds, before it turned 
+                            horizontally and exploded three seconds later. A couple of 3-tonne satalites, 10 years of development and a total of $7 billion spent, 
+                            up in flames within a the first minute of the failed flight 501. This disaterous launch attempt was publicly critisized, and quickly a 
+                            task-team was established to investigate the cause of what became known as 'one of the biggest and most expensive software failures in 
+                            history' (Lions, 1997).
+                        </p>
+                        <p> It did not take scientists long to identify the cause of the failed flight - a software bug in the rocket's Inertial Reference System (IRS). 
+                            This system was responsible for determining whether the rocket was pointing up or down - represented as a 64-bit float value - based on the 
+                            system used on the rocket's predecessor that ran a successfull space , the Ariane 4. According to an article from BBC news (Amos, 2014), the 
+                            on-board computer needed to convert the 64-bit float representing its sideways velocity to a 16-bit format (as was done in the previous launch 
+                            of the Ariane 4). This was unsuccessful, as the horizontal acceleration of the Ariane 5 was much more than that of the Ariane 4 rocket, as it 
+                            exceeded the largest possible value to store in the 16-bit signed integer (32, 767). No exception handler was embedded in the flight's programme, 
+                            resulting in an entire software shutdown on-board.
+                        </p>
+                        <p>  
+                            After this particular system was shutdown, the backup was to pass control to a backup system, which was identical to the one that failed. That 
+                            system thus also failed in the exact same way, and subsequently caused the rocket to shut down its IRS system, causing the 90 degree turn and 
+                            eventual explosion (Lions, 1997).
+                        </p>
+                        <p>    
+                            As far as software mailfunctions go, this one is still considered to be one of the biggest in history. Although no lives were lost, the total 
+                            cost of this seemingly small value being overlooked in the IRS algorithm was extremely high, enough to terminate the entire program.</p>
+                            <img class="col-md-12" src="images/OOIS/oois_1.jpg" alt="">
+                        <br><br>
+                        <strong>References:</strong>
+                        <p>Amos, J. (2017). Full thrust on Europe’s new Rocket. BBC News. [Accessed 16 November 2021]. <br><br>
+                            Hamrouni, W. (2017). Biggest Information Technology Failures and Scares. Exoplatform. Available at: 
+                            https://www.exoplatform.com/blog/5-of-the-biggest-information-technology-failures-and-scares/ [Accessed 17 November 2021]. <br><br>
+                            Lions, J. L. (1997). Flight 501 Failure. Report by the Inquiry Board. Paris. <br><br>
+                            Lynch, J. (2017). The Worst Computer Bugs in History: The Ariane 5 Disaster. Bugsnag. Available at: 
+                            https://www.bugsnag.com/blog/bug-day-ariane-5-disaster [Accessed 17 November 2021].</p>
+                        <br>
                     </div><!-- .entry-content -->
+                    <div class="entry-content">
+                        <p><strong>Peer Response: </strong></p>
+                        <p>Possible measures
+                            The vulnerable code was written in ADA (Lions, 1997). ADA is designed to detect potential errors at compile-time and potential overflows are 
+                            part of the checks (Brosgol, 2006). In other words, the programming language used for the project should have protected the project from such 
+                            failure. <br><br>
+                            It is possible, however, that different compilers may skip some controls or leave the decision to perform them to the developer 
+                            (Stackexchange, 2016). It is also possible to write poor code that does trigger the compiler's checks. <br>
+                            It seems logical to conclude that a better training of the developers, or a stricter configuration in the developers' 
+                            tools would prevent this kind of incidents. <br> <br>
+                            Demonstration of the checks <br>
+                            I tested this possibility with a simple software, overflow.adb: <br>
+                            with Ada.Text_IO; <br>
+                            procedure Overflow with SPARK_Mode is <br><br>
+                               X : Long_Float range 0.0 .. 3000000000.0 := Long_Float(integer'last); <br>
+                               V : integer range 0 .. 1000; <br>
+                            begin <br>
+                              V := Integer(X); <br>
+                              Ada.Text_IO.Put_Line (integer'Image (V)); <br>
+                              X := X + 0.5; <br>
+                              V := Integer(X); <br>
+                              Ada.Text_IO.Put_Line (integer'Image (V)); <br>
+                            end Overflow; <br><br>
+                            Variable X is defined as a 64bits Float ranging from 0 to 3.000.000.000 while variable V is defined between 0 and 1.000. This software 
+                            should fail when X is converted into an integer. <br><br>
+                            Compilation: <br>
+                            gnatmake -f overflow.adb  -largs -Wl,-v <br>
+                            The software compiles without errors but it does not run failing immediately: <br>
+                            raised CONSTRAINT_ERROR : overflow.adb:7 range check failed <br>
+                            Defining a project, my_project.gpr: <br>
+                            project My_Project is <br><br>
+                               for Source_Dirs use ("."); <br>
+                            end My_Project; <br><br>
+                            and then running gnatprove: <br>
+                            gnatprove -P my_project.gpr <br>
+                            returns an error: <br><br>
+                            overflow.adb:7:08: medium: range check might fail (e.g. when X = 2.1474836470E+9) <br><br>
+                            It was possible to detect the potential overflow during the development. <br>
+                            Demonstration of the failure <br><br>
+                            It is necessary to remove the range definition: <br><br>
+                            with Ada.Text_IO; <br>
+                            procedure Overflow with SPARK_Mode is <br>
+                               X : Long_Float := Long_Float(integer'last); <br>
+                               V : integer; <br>
+                            begin <br>
+                              V := Integer(X); <br>
+                              Ada.Text_IO.Put_Line (integer'Image (V)); <br>
+                              X := X + 0.5; <br>
+                              V := Integer(X); <br>
+                              Ada.Text_IO.Put_Line (integer'Image (V)); <br>
+                            end Overflow; <br><br>
+                            The code compiles, but this time the code runs failing at runtime after the first print. This is the output: <br>
+                            2147483647 <br><br>
+                            raised CONSTRAINT_ERROR : overflow.adb:10 overflow check failed <br><br>
+                            Final note <br><br>
+                            Installing the ADA compiler is not simple, but it is possible to run the experiments in https://onecompiler.com/ada <br>
+                            Source is available: https://github.com/ros101/overflow-in-ada <br><br>
+                            <br>
+                            <strong>References</strong><br>
+                            <br>
+                            Brosgol, B. M. (2006) Ada 2005: a language for high-integrity applications. CrossTalk–The Journal of Defense Systems, 19(8), 8-11. <br>
+                            Lions, J. L. (1997). Flight 501 Failure. Report by the Inquiry Board. Paris. <br>
+                            Stackexchange (2016) 'Why is overflow silently allowed in Ada?'. Available from 
+                            https://softwareengineering.stackexchange.com/questions/324771/why-is-overflow-silently-allowed-in-ada [Accessed on 19/11/2021]</p>
+                    </div>
 
                     <div class="post-share flex align-items-center">
                         <!-- <label>share:</label> -->
@@ -96,17 +194,17 @@
                     <div class="posted-date">
                         <label>Date</label>
 
-                        <span class="date-format"><a href="#">Date completed</a></span>
+                        <span class="date-format"><a href="#">14 November 2021 - 5 December 2021</a></span>
                     </div><!-- .posted-date -->
 
                     <div class="post-category">
                         <label>Project Type</label>
-                        <span><a href="#">Type</a></span>
+                        <span><a href="#">Collaborative Discussion</a></span>
                     </div><!-- .post-category -->
 
                     <div class="posted-tags">
                         <label>tags</label>
-                        <span><a href="#">tags</a><a href="#"></a><a href="#"></a> </span>
+                        <span><a href="#">Discussion, Collaboration, Reflection</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
@@ -118,7 +216,7 @@
                     <ul class="flex justify-content-between align-items-center">
                         <li><a href="#"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="#"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="oois_2.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->
