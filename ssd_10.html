@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>bvr</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><header class="site-header">
+    <div class="site-branding">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <div class="hamburger-menu">
+        <div class="menu-icon">
+            <img src="images/menu-icon.png" alt="menu icon">
+        </div><!-- .menu-icon -->
+
+        <div class="menu-close-icon">
+            <img src="images/x.png" alt="menu close icon">
+        </div><!-- .menu-close-icon -->
+    </div><!-- .hamburger-menu -->
+</header><!-- .site-header -->
+
+<nav class="site-navigation flex flex-column justify-content-between">
+    <div class="site-branding d-none d-lg-block ">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo2.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <ul class="main-menu flex flex-column justify-content-center">
+        <li class="current-menu-item"><a href="index.html">Home</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <div class="social-profiles">
+        <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+            <li><a href="https://www.facebook.com/bernhard.vanrenssen"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/berniedoesnthavig/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/bernhard-van-renssen-57a60a164/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/bernhardvanrenssen"><i class="fa fa-github"></i></a></li>
+        </ul>
+    </div><!-- .social-profiles -->
+</nav><!-- .site-navigation -->
+
+<div class="nav-bar-sep d-lg-none"></div>
+
+<div class="outer-container">
+    <div class="container single-portfolio">
+        <div class="row">
+            <div class="col-12">
+                <div class="featured-img">
+                    <!-- <figure>
+                        <img src="images/single-portfolio.png" alt="">
+                    </figure> -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <div class="col-12 col-lg-8">
+                <div class="content-area">
+                    <header class="entry-header">
+                        <h1>Codio: Equivalence Testing in Python</h1>
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-content">
+                        <p><strong>Python Coding (VS Code)</strong></p>
+                        <p>The original code has been modified to produce only the equivalence partitions,
+                            and print them to the console. This is then compared to new code written in the 
+                            alternate_partition function, by printing the same result to the console.
+                            The time it took to run both functions are then compared and printed
+                             </p>
+                        <p><pre>
+                            <code>
+# CODE SOURCE: https://stackoverflow.com/questions/38924421/is-there-a-standard-way-to-partition-an-interable-into-equivalence-classes-given/38924631#38924631
+
+# The original code has been modified to produce only the equivalence partitions,
+# and print them to the console. This is then compared to new code written in the 
+# alternate_partition function, by printing the same result to the console.
+# The time it took to run both functions are then compared and printed
+
+import time
+
+def equivalence_partition(iterable, relation):
+    """Partitions a set of objects into equivalence classes
+
+    Args:
+        iterable: collection of objects to be partitioned
+        relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+            if and only if o1 and o2 are equivalent
+
+    Returns: classes, partitions
+        classes: A sequence of sets. Each one is an equivalence class
+        partitions: A dictionary mapping objects to equivalence classes
+    """
+    classes = []
+    partitions = {}
+    for o in iterable:  # for each object
+        # find the class it is in
+        found = False
+        for c in classes:
+            if relation(next(iter(c)), o):  # is it equivalent to this class?
+                c.add(o)
+                partitions[o] = c
+                found = True
+                break
+        if not found:  # it is in a new class
+            classes.append(set([o]))
+            partitions[o] = classes[-1]
+    return classes, partitions
+
+
+def equivalence_enumeration(iterable, relation):
+    """Partitions a set of objects into equivalence classes
+
+    Same as equivalence_partition() but also numbers the classes.
+
+    Args:
+        iterable: collection of objects to be partitioned
+        relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+            if and only if o1 and o2 are equivalent
+
+    Returns: classes, partitions, ids
+        classes: A sequence of sets. Each one is an equivalence class
+        partitions: A dictionary mapping objects to equivalence classes
+        ids: A dictionary mapping objects to the indices of their equivalence classes
+    """
+    classes, partitions = equivalence_partition(iterable, relation)
+    ids = {}
+    for i, c in enumerate(classes):
+        for o in c:
+            ids[o] = i
+    return classes, partitions, ids
+
+
+def check_equivalence_partition(classes, partitions, relation):
+    """Checks that a partition is consistent under the relationship"""
+    for o, c in partitions.items():
+        for _c in classes:
+            assert (o in _c) ^ (not _c is c)
+    for c1 in classes:
+        for o1 in c1:
+            for c2 in classes:
+                for o2 in c2:
+                    assert (c1 is c2) ^ (not relation(o1, o2))
+
+
+def test_equivalence_partition():
+    """ FIRST WAY OF TESTING - CODE PROVIDED: """
+    start = time.time() # Start timer 
+    relation = lambda x, y: (x - y) % 4 == 0
+    classes, partitions = equivalence_partition(
+        range(-3, 5),
+        relation
+    )
+    #check_equivalence_partition(classes, partitions, relation)
+    for c in classes: print(c)
+    #for o, c in partitions.items(): print(o, ':', c)
+    end = time.time()
+    print("TIME TAKEN FOR CODE TEST 1 TO EXECUTE: ", end - start)
+    print()
+    print()
+
+    start = time.time()
+    domain = range(-3,5)
+    relation = lambda x, y: (x - y) % 4 == 0
+    #partition(domain, relation)
+    print(alternate_partition(domain, relation))
+    end = time.time()
+    print("TIME TAKEN FOR CODE TEST 2 TO EXECUTE: ", end - start)
+
+def alternate_partition(domain, relation):
+    """ALTERNATIVE WAY OF TESTING - SHORTER AND LESS COMPLEX METHOD"""
+    known = set()   # set() method is used to convert any of the iterable to 
+                    # sequence of iterable elements with distinct elements, 
+                    # commonly called Set. 
+    classes = {}
+    for x in domain: #iterate through the domain
+        for representative, values in classes.items():
+            if relation(x, representative):
+                values.add(x)
+                break
+        else:
+            classes[x] = set([x])
+    return classes.values()
+
+if __name__ == '__main__':
+    test_equivalence_partition()
+
+                            </code>
+                        </pre></p>
+                        <p></p>
+                        <p><strong>Console Output:</strong></p>
+                        <img class="col-md-12" src="images/SSD/13.png" alt="">
+                        
+                    </div><!-- .entry-content -->
+
+                    <div class="post-share flex align-items-center">
+                        <!-- <label>share:</label> -->
+
+                        <ul class="flex align-items-center">
+                            <!-- <li class="fb"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="gp"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="in"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="tw"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        </ul>
+                    </div><!-- .post-share -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <aside class="col-12 col-lg-3 offset-lg-1">
+                <div class="entry-meta">
+                    <div class="posted-date">
+                        <label>Date</label>
+
+                        <span class="date-format"><a href="#">16-April-2022</a></span>
+                    </div><!-- .posted-date -->
+
+                    <div class="post-category">
+                        <label>Project Type</label>
+                        <span><a href="#">Coding Excercise</a></span>
+                    </div><!-- .post-category -->
+
+                    <div class="posted-tags">
+                        <label>unit 5</label>
+                        <span><a href="#">Python Coding Excercise</a><a href="#"></a><a href="#"></a> </span>
+                    </div><!-- .entry-meta -->
+                </div><!-- .entry-meta -->
+            </aside><!-- .col-md-3 -->
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col">
+                <nav class="post-nav">
+                    <ul class="flex justify-content-between align-items-center">
+                        <li><a href="ssd_9.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
+                        <li><a href="ssd_11.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                    </ul>
+                </nav><!-- .post-nav -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>

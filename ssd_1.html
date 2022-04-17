@@ -71,11 +71,57 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Project #1</h1>
+                        <h1>Collaborative Discussion 1: UML flowchart</h1>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter first entry/task here </p>
+                        <p><strong>Initial Post</strong> </p>
+                        <p>Cross site scripting is a typical web attack that compromises the user’s interactions with the application
+                             through an attacker injecting malicious code to a target web application. An attacker gains knowledge of 
+                             the victims’ credentials, and can often gain full control of the victim's functionality and data. The web 
+                             application thus becomes a vehicle to deliver malicious script to the user’s browser (PortSwigger, 2020).</p>
+                        <img class="col-md-12" src="images/SSD/1_umlFlowchart.png" alt="">
+                        <p>Cross-site scripting (or XSS) works by returning malicious (often JavaScript) code to a user’s request. Typically 
+                            this happens when a user logs in, browses a web application, and clicks on a link that runs the malicious script
+                            on the victims domain (often found on legitimate websites). The attacker thus gains access to personal information
+                            ranging from passwords to banking login details, amongst other sensitive information. A web page is typically vulnerable
+                            if unsanitized user input is used (sanitized - only valid input characters are used) (Fernandez & Sulatycki, 2015).</p>
+                        <p>There are a few methods to mitigate the risk of a XSS attack. The following are general methods used to reduce your risk of XSS attacks,
+                             as identified by OWASP (Mitre, 2017):
+                            <br>
+                            1. Train and keep all staff up-to-date on the risks associated with XSS vulnerabilities.
+                            <br>
+                            2.Treat all input as public input, even if it is from an authenticated/internal source.
+                            <br>
+                            3. Use appropriate escaping/encoding techniques (HTML, JavaScript, URL escapes etc). Use existing libraries when possible
+                            <br>
+                            4. Use libraries to Sanitize HTML
+                            <br>
+                            5. Set HttpOnly flag, so that cookies will not be accessible via client-side JavaScript.
+                            <br>
+                            6. Use a Content Security Policy response header.
+                            <br>
+                            7. Scan your web application regularly with vulnerability scanning software.</p>
+                        <p><strong>REFERENCES</strong></p>
+                        <p>Fernandez, E. & Sulatycki, R., 2015. A threat pattern for the cross-site scripting (XSS) attack. Semantic Scholar, 2(1).
+                            <br>
+                            Mitre, 2017. Weaknesses in OWASP Top Ten.
+                            <br>
+                            PortSwigger, 2020. Cross-site scripting. [Online]. Available at: https://portswigger.net/web-security/cross-site-scripting
+                            [Accessed 14 03 2022].</p>
+                        <p></p>
+                        <p><strong>REPLY - Kei Yui Yvone Chan</strong></p>
+                        <p>Apart from detecting XSS vulnerability, Marashdih and Zaaba (2017) described methods to remove XSS vulnerability and  
+                            the tools to remove XSS vulnerability from the source code.</p>
+                            <p>OWASP has launched the Enterprise Security API (ESAPI) that can be utilised to enforce XSS attack prevention rules. 
+                                The XSS vulnerabilities are first identified by OWASP's ESAPI security procedure. Next, the types of the ESAPI-escaping 
+                                protocols need to be applied to substitute vulnerable codes are recognised. Finally, the secure scripts are produced and 
+                                the questionable codes are replaced. By using ESAPI safety mechanism, all detected XSS vulnerabilities in web applications 
+                                based on Java can be removed. </p>
+                            <p>HTMLPurifier is another tool in PHP that can eliminate malicious scripts. The main advantages of the deployment of HTMLPurifier 
+                                are the substantially secure validation of user inputs and relatively easy-to-use characteristic</p>
+                            <p>REFERENCE</p>
+                            <p>Marashdih, A.W., Zaaba, Z.F. (2017) Cross Site Scripting: Removing Approaches in Web Application. Procedia Computer Science (124): 647-655</p>
                     </div><!-- .entry-content -->
 
                     <div class="post-share flex align-items-center">
@@ -96,17 +142,17 @@
                     <div class="posted-date">
                         <label>Date</label>
 
-                        <span class="date-format"><a href="#">Date completed</a></span>
+                        <span class="date-format"><a href="#">14-March-2022</a></span>
                     </div><!-- .posted-date -->
 
                     <div class="post-category">
                         <label>Project Type</label>
-                        <span><a href="#">Type</a></span>
+                        <span><a href="#">Collaborative Discussion</a></span>
                     </div><!-- .post-category -->
 
                     <div class="posted-tags">
-                        <label>tags</label>
-                        <span><a href="#">tags</a><a href="#"></a><a href="#"></a> </span>
+                        <label>unit 2</label>
+                        <span><a href="#">Collaborative Discussion</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
@@ -118,7 +164,7 @@
                     <ul class="flex justify-content-between align-items-center">
                         <li><a href="#"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="#"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="ssd_2.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->

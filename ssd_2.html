@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>bvr</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><header class="site-header">
+    <div class="site-branding">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <div class="hamburger-menu">
+        <div class="menu-icon">
+            <img src="images/menu-icon.png" alt="menu icon">
+        </div><!-- .menu-icon -->
+
+        <div class="menu-close-icon">
+            <img src="images/x.png" alt="menu close icon">
+        </div><!-- .menu-close-icon -->
+    </div><!-- .hamburger-menu -->
+</header><!-- .site-header -->
+
+<nav class="site-navigation flex flex-column justify-content-between">
+    <div class="site-branding d-none d-lg-block ">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo2.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <ul class="main-menu flex flex-column justify-content-center">
+        <li class="current-menu-item"><a href="index.html">Home</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <div class="social-profiles">
+        <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+            <li><a href="https://www.facebook.com/bernhard.vanrenssen"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/berniedoesnthavig/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/bernhard-van-renssen-57a60a164/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/bernhardvanrenssen"><i class="fa fa-github"></i></a></li>
+        </ul>
+    </div><!-- .social-profiles -->
+</nav><!-- .site-navigation -->
+
+<div class="nav-bar-sep d-lg-none"></div>
+
+<div class="outer-container">
+    <div class="container single-portfolio">
+        <div class="row">
+            <div class="col-12">
+                <div class="featured-img">
+                    <!-- <figure>
+                        <img src="images/single-portfolio.png" alt="">
+                    </figure> -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <div class="col-12 col-lg-8">
+                <div class="content-area">
+                    <header class="entry-header">
+                        <h1>Collaborative Discussion 1: Peer Responses</h1>
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-content">
+                        <p><strong>Initial Post by Alberto Rossotto</strong> </p>
+                        <p><strong>Cross Site Request Forgery (CSRF)</strong></p>
+                        <p>A Cross-Site Forgery Attack forces the user to submit data to another website's secure area where he has an active session. The user visits a malicious website and clicks on a link or a button. This action sends an HTTP action directed to another website to trigger an event on behalf of the user. Depending on the design of the targetted website, the HTTP action can be a form, a simple HTTP GET, or a REST call.</p>
+                        <img class="col-md-12" src="images/SSD/2.png" alt="">
+                        <p>Mitigating this kind of attack is usually quite simple. The server must generate a unique token that the client must include in the subsequent request. The server must generate a new token at every exchange. This practice ensures that every client submission corresponds to an initial interaction initiated by the client.</p>
+                        <img class="col-md-12" src="images/SSD/3.png" alt="">
+                        <p>The same-origin policy active in all modern browsers protects the user from this attack when using REST APIs (unless the server explicitly disables it with the CORS header). HTTP GET should never change the server's state and be a possible target. This leaves HTML Forms as the only risk. Many web frameworks can generate safe forms without requiring manual coding. They include the CSRF token as a hidden field and automatically check the token in the submitted data.</p>
+                        <p><strong>REFERENCES</strong></p>
+                        <p>OWASP (N.A.) Cross Site Request Forgery (CSRF). Available from: https://owasp.org/www-community/attacks/csrf [Accessed on 8/03/2022]
+                        </p>
+                        <p></p>
+                        <p><strong>REPLY - Bernhard van Renssen</strong></p>
+                        <p>Hi Alberto 
+
+                            Would it not be possible to inspect the form through the browser's developer tools, and manually remove the hidden field of the input box, which would reveal the token to the user? An attacker could thus change this field:</p>
+                       <code> &lt;input type="hidden" id="token" name="token" value="c319927fd5898ac"&gt; to <br>
+
+                        &lt;input type="" id="token" name="token" value="c319927fd5898ac"&gt; </code>
+                        <p>Would this not expose the token to the potential attacker? With the little experience I have in the banking sector, I have heard that you expose as little as possible to the user in the DOM? I get that there are many processes that have to happen simultaneously to actually create a successful cyber attack, but with many uneducated and weary users that might use the system, chances are that there will be people that click on malicious pop-ups during their banking session.</p>
+                        <p>Might be missing something obvious, just though I would ask if this is how banking forms are actually passing tokens to verify a legitimate transaction?</p>
+                        <p><strong>REPLY - Alberto Rossotto</strong></p>
+                        <p>It is possible to expose the hidden fields in the form. The user would see "weird" fields on the page breaking the page layout, but this would not compromise the security (although the form may become invalid).</p>
+                        <p>You made me realize that this could be the base for a scam by phone.</p>
+                        <p>1.The scammer calls the user and convinces him to open the money transfer page.
+                            <br>
+                            2. The scammer guides the user through the browser's tools to inspect the DOM and extract the CSRF Token.
+                            <br>
+                            3. The user reveals the CSRF Token to the scammer.
+                            <br>
+                            4. The scammer convinces the user to open another website with a forged form and click on active content.
+                            <br>
+                            5. The form is submitted to the bank abusing the user's open session and is prefilled by the CSRF Token that the scammer got by phone.</p>
+                        <p>Considering how difficult it is to navigate a DOM it seems an unrealistic scenario.</p>
+                        <img class="col-md-12" src="images/SSD/4.png" alt="">
+                        
+                    </div><!-- .entry-content -->
+
+                    <div class="post-share flex align-items-center">
+                        <!-- <label>share:</label> -->
+
+                        <ul class="flex align-items-center">
+                            <!-- <li class="fb"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="gp"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="in"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="tw"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        </ul>
+                    </div><!-- .post-share -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <aside class="col-12 col-lg-3 offset-lg-1">
+                <div class="entry-meta">
+                    <div class="posted-date">
+                        <label>Date</label>
+
+                        <span class="date-format"><a href="#">16-March-2022</a></span>
+                    </div><!-- .posted-date -->
+
+                    <div class="post-category">
+                        <label>Project Type</label>
+                        <span><a href="#">Collaborative Discussion</a></span>
+                    </div><!-- .post-category -->
+
+                    <div class="posted-tags">
+                        <label>unit 2</label>
+                        <span><a href="#">Collaborative Discussion</a><a href="#"></a><a href="#"></a> </span>
+                    </div><!-- .entry-meta -->
+                </div><!-- .entry-meta -->
+            </aside><!-- .col-md-3 -->
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col">
+                <nav class="post-nav">
+                    <ul class="flex justify-content-between align-items-center">
+                        <li><a href="ssd_1.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
+                        <li><a href="ssd_3.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                    </ul>
+                </nav><!-- .post-nav -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>

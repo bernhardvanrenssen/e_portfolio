@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>bvr</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><header class="site-header">
+    <div class="site-branding">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <div class="hamburger-menu">
+        <div class="menu-icon">
+            <img src="images/menu-icon.png" alt="menu icon">
+        </div><!-- .menu-icon -->
+
+        <div class="menu-close-icon">
+            <img src="images/x.png" alt="menu close icon">
+        </div><!-- .menu-close-icon -->
+    </div><!-- .hamburger-menu -->
+</header><!-- .site-header -->
+
+<nav class="site-navigation flex flex-column justify-content-between">
+    <div class="site-branding d-none d-lg-block ">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo2.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <ul class="main-menu flex flex-column justify-content-center">
+        <li class="current-menu-item"><a href="index.html">Home</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <div class="social-profiles">
+        <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+            <li><a href="https://www.facebook.com/bernhard.vanrenssen"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/berniedoesnthavig/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/bernhard-van-renssen-57a60a164/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/bernhardvanrenssen"><i class="fa fa-github"></i></a></li>
+        </ul>
+    </div><!-- .social-profiles -->
+</nav><!-- .site-navigation -->
+
+<div class="nav-bar-sep d-lg-none"></div>
+
+<div class="outer-container">
+    <div class="container single-portfolio">
+        <div class="row">
+            <div class="col-12">
+                <div class="featured-img">
+                    <!-- <figure>
+                        <img src="images/single-portfolio.png" alt="">
+                    </figure> -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <div class="col-12 col-lg-8">
+                <div class="content-area">
+                    <header class="entry-header">
+                        <h1>Programming Concepts Excercise</h1>
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-content">
+                        <p><strong>What is ReDOS and what part do ‘Evil Regex’ play?</strong></p>
+                        <p>ReDOS is an acronym for Regular Exporession Denial-of-Service attack. Regular Expressions is simply a string of text that allows a user to create patterns that can help match or locate that pattern in a body of text – basically a search/lookup function (Computer Hope, 2020)
+                            A ReDOS is thus an attack that causes a denial-of-service – meaning that the system will freeze or take a very long time to respond, due to it trying to execute the Regex command entered, causing any user to not be able to use the system at all whilst the system tries to resolve the regex command or lookup (Weidman, n.d.).
+                            An ‘Evil Regex’ is a Regex command that an attacker carefully crafted, that will cause this ReDOS attack. With the special syntax that Regex uses to validate a user’s input, these carefully constructed inputs can exploit the way that the lookup is handled, by taking the longest available route to locate/handle the input string – for example in a username/password input box.
+                            </p>
+                        <p><strong>What are the common problems associated with the use of regex? How can these be mitigated?</strong></p>
+                        <p>Common problems with regex include that it few expressions fail to compile. This is a problem because the syntax used in most regex is sensitive to the placement of the character in its relation to the characters it needs to lookup. Regular expressions thus need to be always correct, or it could easily return false information, instead of failing. The user will be unaware that the actual regex is wrong and will continue thinking that the correct lookup is being returned (No exception is being thrown by the code). 
+                            A common way to mitigate these regex risks, is by using tools that detect uncommon or irregular use of regex, that might be due to the programmer coding incorrect regular expressions. One such tool -ACRE (Automatic Checking of Regular Expressions) is described by Larson (2018) as “…a tool that detects mistakes in regular expressions”. The tool works by allowing the user to insert the desired regex and clicking the “Check” button. It then runs a series of 11 checks (Larson, 2018), focusing on mistakes that the user might have entered and the part that contains the irregularity/error is then highlighted, for the user to inspect and correct. 
+                            </p>
+                        <p><strong>How and why could regex be used as part of a security solution?</strong></p>
+                        <p>There are a couple of reason how and why developers would use regular expressions as a tool to improve or secure their web applications. Regex allows the developer to (Li, 2020):
+                            <br>
+                            a.	Create rule blocks for Firewalls to filter through certain file types or IP addresses that might contain malicious content.
+                            <br>
+                            b.	Do user input validation. This is a very common use for Regex, as it will validate user input, ensuring that no malicious content can be entered – for example characters that can alter a request made to the system, commonly used in a SQL-injection or XSS (Cross Site Scripting) attack. 
+                            <br>
+                            c.	Detect possible dangerous content in files, so that malware can quarantine files accordingly.
+                            </p>
+                        <p><strong>REFERENCES</strong></p>
+                        <p>Computer Hope, 2020. Regex. [Online] 
+                            Available at: https://www.computerhope.com/jargon/r/regex.htm
+                            [Accessed 09 April 2022].
+                            <br>
+                            Larson, E., 2018. Automatic Checking of Regular Expressions. 18th IEEE International Working Conference on Source Code Analysis and Manipulation (SCAM).
+                            Li, V., 2020. Dangerous Regular Expressions. [Online] 
+                            <br>
+                            Available at: https://sec.okta.com/articles/2020/07/dangerous-regular-expressions
+                            [Accessed 09 April 2022].
+                            <br>
+                            Weidman, A., n.d.. Regular Expression Denial of Service - ReDoS. OWASP.
+                            </p>
+                        <!-- <img class="col-md-12" src="images/SSD/5.png" alt=""> -->
+                        
+                    </div><!-- .entry-content -->
+
+                    <div class="post-share flex align-items-center">
+                        <!-- <label>share:</label> -->
+
+                        <ul class="flex align-items-center">
+                            <!-- <li class="fb"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="gp"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="in"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="tw"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        </ul>
+                    </div><!-- .post-share -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <aside class="col-12 col-lg-3 offset-lg-1">
+                <div class="entry-meta">
+                    <div class="posted-date">
+                        <label>Date</label>
+
+                        <span class="date-format"><a href="#">09-April-2022</a></span>
+                    </div><!-- .posted-date -->
+
+                    <div class="post-category">
+                        <label>Project Type</label>
+                        <span><a href="#">Portfolio Questions</a></span>
+                    </div><!-- .post-category -->
+
+                    <div class="posted-tags">
+                        <label>unit 4</label>
+                        <span><a href="#">Portfolio Questions</a><a href="#"></a><a href="#"></a> </span>
+                    </div><!-- .entry-meta -->
+                </div><!-- .entry-meta -->
+            </aside><!-- .col-md-3 -->
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col">
+                <nav class="post-nav">
+                    <ul class="flex justify-content-between align-items-center">
+                        <li><a href="ssd_7.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
+                        <li><a href="ssd_9.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                    </ul>
+                </nav><!-- .post-nav -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>
