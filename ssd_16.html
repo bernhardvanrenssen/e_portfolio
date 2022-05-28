@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>bvr</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><header class="site-header">
+    <div class="site-branding">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <div class="hamburger-menu">
+        <div class="menu-icon">
+            <img src="images/menu-icon.png" alt="menu icon">
+        </div><!-- .menu-icon -->
+
+        <div class="menu-close-icon">
+            <img src="images/x.png" alt="menu close icon">
+        </div><!-- .menu-close-icon -->
+    </div><!-- .hamburger-menu -->
+</header><!-- .site-header -->
+
+<nav class="site-navigation flex flex-column justify-content-between">
+    <div class="site-branding d-none d-lg-block ">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo2.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <ul class="main-menu flex flex-column justify-content-center">
+        <li class="current-menu-item"><a href="index.html">Home</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <div class="social-profiles">
+        <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+            <li><a href="https://www.facebook.com/bernhard.vanrenssen"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/berniedoesnthavig/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/bernhard-van-renssen-57a60a164/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/bernhardvanrenssen"><i class="fa fa-github"></i></a></li>
+        </ul>
+    </div><!-- .social-profiles -->
+</nav><!-- .site-navigation -->
+
+<div class="nav-bar-sep d-lg-none"></div>
+
+<div class="outer-container">
+    <div class="container single-portfolio">
+        <div class="row">
+            <div class="col-12">
+                <div class="featured-img">
+                    <!-- <figure>
+                        <img src="images/single-portfolio.png" alt="">
+                    </figure> -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <div class="col-12 col-lg-8">
+                <div class="content-area">
+                    <header class="entry-header">
+                        <h1>Developing an API for a Distributed Environment</h1>
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-content">
+                        <p><strong>In this session, you will create a RESTful API which can be used to create and delete user records. Responses to the questions should be recorded in your e-portfolio.</strong></p>
+                        <p>Code provided:</p>
+                        <p><pre><code>
+from flask import Flask
+from flask_restful import Api, Resource, reqparse
+ 
+app = Flask(__name__)
+api = Api(app)
+ 
+users = [
+    {
+        "name": "James",
+        "age": 30,
+        "occupation": "Network Engineer"
+    },
+    {
+        "name": "Ann",
+        "age": 32,
+        "occupation": "Doctor"
+    },
+    {
+        "name": "Jason",
+        "age": 22,
+        "occupation": "Web Developer"
+    }
+]
+ 
+class User(Resource):
+    def get(self, name):
+        for user in users:
+            if(name == user["name"]):
+                return user, 200
+        return "User not found", 404
+ 
+    def post(self, name):
+        parser = reqparse.RequestParser()
+        parser.add_argument("age")
+        parser.add_argument("occupation")
+        args = parser.parse_args()
+ 
+        for user in users:
+            if(name == user["name"]):
+                return "User with name {} already exists".format(name), 400
+ 
+        user = {
+            "name": name,
+            "age": args["age"],
+            "occupation": args["occupation"]
+        }
+        users.append(user)
+        return user, 201
+ 
+    def put(self, name):
+        parser = reqparse.RequestParser()
+        parser.add_argument("age")
+        parser.add_argument("occupation")
+        args = parser.parse_args()
+ 
+        for user in users:
+            if(name == user["name"]):
+                user["age"] = args["age"]
+                user["occupation"] = args["occupation"]
+                return user, 200
+        
+        user = {
+            "name": name,
+            "age": args["age"],
+            "occupation": args["occupation"]
+        }
+        users.append(user)
+        return user, 201
+ 
+    def delete(self, name):
+        global users
+        users = [user for user in users if user["name"] != name]
+        return "{} is deleted.".format(name), 200
+      
+api.add_resource(User, "/user/<string:name>")
+ 
+app.run(debug=True)
+                        </code></pre></p>
+                        <br><br>
+                        <p><strong>Run the API.py code. Take a screenshot of the terminal output. What command did you use to compile and run the code?</strong></p>
+                        <p>Command used: python api.py</p>
+                        <p>Terminal Output:</p>
+                        <img class="col-md-12" src="images/SSD/27.png" alt="">
+                        <p><strong>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann
+                            What happens when this command is run, and why?
+                        </strong></p>
+                        <p>The web browser outputs the JSON dictionary of the user Ann, as requested by the API:</p>
+                        <img class="col-md-12" src="images/SSD/28.png" alt="">
+                        <P>Terminal Response:</P>
+                        <img class="col-md-12" src="images/SSD/29.png" alt="">
+                        <p><strong>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Adam
+                            What happens when this command is run, and why?
+                        </strong></p>
+                        <p>The browser outputs a response of: “User not found”, and the terminal output gives me a GET response of 404. This response means that the requested page is not found, and upon inspecting the code, it is evident that there is no user with the name: “Adam”.</p>
+                        <p><strong>What capability is achieved by the flask library?</strong></p>
+                        <p>The flask restful api allows a user to make a secure web request to data in our database and code, without exposing or giving the user any more access than he needs to get. Using and API also gives developers access to this data in our possession, which they can then in turn use for whatever application they wish to develop, whilst still hosted on our servers.</p>
+
+                    </div><!-- .entry-content -->
+
+                    <div class="post-share flex align-items-center">
+                        <!-- <label>share:</label> -->
+
+                        <ul class="flex align-items-center">
+                            <!-- <li class="fb"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="gp"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="in"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="tw"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        </ul>
+                    </div><!-- .post-share -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <aside class="col-12 col-lg-3 offset-lg-1">
+                <div class="entry-meta">
+                    <div class="posted-date">
+                        <label>Date</label>
+
+                        <span class="date-format"><a href="#">25-April-2022</a></span>
+                    </div><!-- .posted-date -->
+
+                    <div class="post-category">
+                        <label>Project Type</label>
+                        <span><a href="#">Coding Excercise</a></span>
+                    </div><!-- .post-category -->
+
+                    <div class="posted-tags">
+                        <label>unit 7</label>
+                        <span><a href="#">Coding Excercise, API, Flask</a><a href="#"></a><a href="#"></a> </span>
+                    </div><!-- .entry-meta -->
+                </div><!-- .entry-meta -->
+            </aside><!-- .col-md-3 -->
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col">
+                <nav class="post-nav">
+                    <ul class="flex justify-content-between align-items-center">
+                        <li><a href="ssd_15.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
+                        <li><a href="ssd_17.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                    </ul>
+                </nav><!-- .post-nav -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>

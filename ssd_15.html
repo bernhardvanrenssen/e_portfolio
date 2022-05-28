@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>bvr</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><header class="site-header">
+    <div class="site-branding">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <div class="hamburger-menu">
+        <div class="menu-icon">
+            <img src="images/menu-icon.png" alt="menu icon">
+        </div><!-- .menu-icon -->
+
+        <div class="menu-close-icon">
+            <img src="images/x.png" alt="menu close icon">
+        </div><!-- .menu-close-icon -->
+    </div><!-- .hamburger-menu -->
+</header><!-- .site-header -->
+
+<nav class="site-navigation flex flex-column justify-content-between">
+    <div class="site-branding d-none d-lg-block ">
+        <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo2.png" alt="Logo"></a></h1>
+    </div><!-- .site-branding -->
+
+    <ul class="main-menu flex flex-column justify-content-center">
+        <li class="current-menu-item"><a href="index.html">Home</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <div class="social-profiles">
+        <ul class="flex justify-content-start justify-content-lg-center align-items-center">
+            <li><a href="https://www.facebook.com/bernhard.vanrenssen"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/berniedoesnthavig/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/bernhard-van-renssen-57a60a164/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/bernhardvanrenssen"><i class="fa fa-github"></i></a></li>
+        </ul>
+    </div><!-- .social-profiles -->
+</nav><!-- .site-navigation -->
+
+<div class="nav-bar-sep d-lg-none"></div>
+
+<div class="outer-container">
+    <div class="container single-portfolio">
+        <div class="row">
+            <div class="col-12">
+                <div class="featured-img">
+                    <!-- <figure>
+                        <img src="images/single-portfolio.png" alt="">
+                    </figure> -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <div class="col-12 col-lg-8">
+                <div class="content-area">
+                    <header class="entry-header">
+                        <h1>Exploring a Python Shell</h1>
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-content">
+                        <p><strong>Create a Python Shell that implements the folowing:</strong></p>
+                        <ul><li>
+                            When you enter the command LIST it lists the contents of the current directory
+                        </li>
+                        <li>The ADD command will add the following two numbers together and provide the result</li>
+                        <li>The HELP command provides a list of commands available</li>
+                        <li>The EXIT command exits the shell</li>
+                        </ul>
+                        <br>
+                        <p><strong>Code Written:</strong></p>
+                        <pre><code>
+from cmd import Cmd
+import os
+ 
+class MyPrompt(Cmd):
+    prompt = 'pb> '
+    intro = "Welcome! Type ? to list commands"
+    #list input characters to a finite amount, probably 12 characters
+ 
+    def do_exit(self, inp):
+        print("Bye")
+        return True
+    
+    def help_exit(self):
+        print('exit the application. Shorthand: x q Ctrl-D.')
+ 
+    def do_add(self, inp1):
+        x,y = inp1.split(",")
+        try:
+          value = int(x)+int(y)
+        except:
+          print("Please add 2 valid numbers to add, separated by a comma (,)")
+          return
+        print("adding '{}' + '{}' = '{}'".format(x, y, value))
+ 
+    def help_add(self):
+        print("Add 2 numbers together, comma separated.")
+
+    def do_list(self, inp):
+        for root, dirs, files in os.walk("."):
+          for filename in files:
+            print(filename)
+
+    def help_list(self):
+      print("List all the files in current directory")
+ 
+    def default(self, inp):
+        if inp == 'x' or inp == 'q':
+            return self.do_exit(inp)
+ 
+        print("Default: {}".format(inp))
+ 
+    do_EOF = do_exit
+    help_EOF = help_exit
+ 
+if __name__ == '__main__':
+    MyPrompt().cmdloop()
+                        </code></pre>
+                        <br>
+                        <p><strong>Console Output:</strong></p>
+                        <br><p>Running the python Shell, input: ?</p>
+                        <img class="col-md-12" src="images/SSD/21.png" alt="">
+                        <p>"LIST" command:</p>
+                        <img class="col-md-12" src="images/SSD/22.png" alt="">
+                        <br><p>"ADD" command, providing 2 numbers to add together:"</p>
+                        <img class="col-md-12" src="images/SSD/23.png" alt="">
+                        <br><p>"HELP ADD" command:</p>
+                        <img class="col-md-12" src="images/SSD/24.png" alt="">
+                        <br><p>"HELP LIST" command:</p>
+                        <img class="col-md-12" src="images/SSD/25.png" alt="">
+                        <br><p>"EXIT" command:</p>
+                        <img class="col-md-12" src="images/SSD/26.png" alt="">
+                        <br><br>
+                        <p><strong>What are the two main security vulnerabilities with your shell?</strong></p>
+                        <p>Any input can be given, as there is no security implemented/checks for invalid or malicious input, making a DOS attack very easy. Another security flaw would be that an attacker could easily learn the contents of the files in any directory, even the hidden files as the “LIST” command currently lists ALL the commands in the current directory.</p>
+                        <p><strong>What is one recommendation you would make to increase the security of the shell?</strong></p>
+                        <p>Add libraries that validate input to ensure that DOS or XSS attacks do not happen</p>
+                        <p><strong>Add a section to your e-portfolio that provides a (pseudo)code example of changes you would make to the shell to improve its security.</strong></p>
+                        <p>There is one single cause for command injection bugs: poor input validation. Any application that builds command strings using non-sanitized data is vulnerable to this bug.</p>
+                        <p></p>
+                        <p><pre><code>
+from cmd import Cmd
+import os
+# USE AN INPUT VALIDATION LIBRARY, SUCH AS CERBERUS (option 1)
+ 
+class MyPrompt(Cmd):
+    prompt = 'pb> '
+    intro = "Welcome! Type ? to list commands"
+    # OPTION 2 - do custom input validation on the actual cmd line input...
+
+    # list input characters to a finite amount, probably 12 characters
+    # check against the input that only '?' or letters are entered.
+    # This can be done by checking the input with str.isalpha() (which is True when only letters are entered)
+    # Us a try | catch on every input as demonstrated with the pseudocode inline...
+ 
+    def do_exit(self, inp):
+        print("Bye")
+        return True
+    
+    def help_exit(self):
+        print('exit the application. Shorthand: x q Ctrl-D.')
+ 
+    def do_add(self, inp1):
+        x,y = inp1.split(",")
+        try:
+          # Use python .isdigit() to check if numbers are entered
+          value = int(x)+int(y)
+        except:
+          print("Please add 2 valid numbers to add, separated by a comma (,)")
+          return
+        print("adding '{}' + '{}' = '{}'".format(x, y, value))
+ 
+    def help_add(self):
+        print("Add 2 numbers together, comma separated.")
+
+    def do_list(self, inp):
+        for root, dirs, files in os.walk("."):
+          for filename in files:
+            print(filename)
+
+    def help_list(self):
+      print("List all the files in current directory")
+ 
+    def default(self, inp):
+        if inp == 'x' or inp == 'q':
+            return self.do_exit(inp)
+                        
+        # PSEUDOCODE to check valid input: 
+        # while True:
+        #   try:
+        #       if inp.find('add'):
+        #          pass input as valid (valid digit entry will be checked in do_add function)
+        #       valid = str.isalpha(inp) or inp == '?'
+        #   except ValueError:
+        #       print("Invalid input, please try again")
+        #       continue
+        #   else:
+        #       break
+ 
+        print("Default: {}".format(inp))
+ 
+    do_EOF = do_exit
+    help_EOF = help_exit
+ 
+if __name__ == '__main__':
+    MyPrompt().cmdloop()
+                        </code></pre></p>
+                        
+
+                    </div><!-- .entry-content -->
+
+                    <div class="post-share flex align-items-center">
+                        <!-- <label>share:</label> -->
+
+                        <ul class="flex align-items-center">
+                            <!-- <li class="fb"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="gp"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="in"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="tw"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                        </ul>
+                    </div><!-- .post-share -->
+                </div><!-- .content-area -->
+            </div><!-- .col-12 -->
+
+            <aside class="col-12 col-lg-3 offset-lg-1">
+                <div class="entry-meta">
+                    <div class="posted-date">
+                        <label>Date</label>
+
+                        <span class="date-format"><a href="#">25-April-2022</a></span>
+                    </div><!-- .posted-date -->
+
+                    <div class="post-category">
+                        <label>Project Type</label>
+                        <span><a href="#">Codio Activity</a></span>
+                    </div><!-- .post-category -->
+
+                    <div class="posted-tags">
+                        <label>unit 7</label>
+                        <span><a href="#">Coding Excercise</a><a href="#"></a><a href="#"></a> </span>
+                    </div><!-- .entry-meta -->
+                </div><!-- .entry-meta -->
+            </aside><!-- .col-md-3 -->
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col">
+                <nav class="post-nav">
+                    <ul class="flex justify-content-between align-items-center">
+                        <li><a href="ssd_14.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="modules.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
+                        <li><a href="ssd_16.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                    </ul>
+                </nav><!-- .post-nav -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- .outer-container -->
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/custom.js'></script>
+
+</body>
+</html>
