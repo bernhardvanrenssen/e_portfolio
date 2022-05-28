@@ -72,11 +72,34 @@
                 <div class="content-area">
                     <header class="entry-header">
                         <h1>Codio activity: Exploring Python Tools & Features</h1>
-                        <h2>Part I</h2>
+                        <h2>Part I - Buffer Overflow in C</h2>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter codio exercises here</p>
+                        <p><strong>Buffer Overflow in C</strong></p>
+                        <p><pre><code>
+#include &lt;stdio.h&gt; 
+int main(int argc, char **argv)
+{
+char buf[8]; // buffer for eight characters
+printf("enter name:"); 
+gets(buf); // read from stdio (sensitive function!)
+printf("%s\n", buf); // print out data stored in buf
+return 0; // 0 as return value
+{
+                        </code></pre></p>
+                        <p><strong>Command line output:</strong></p>
+                        <p><pre><code>
+$ ./bufoverflow
+Enter name: bernhard
+bernhard
+$ ./bufoverflow
+Enter name: bernhardvanrenssen
+bernhardvanrenssen
+*** stack smashing detected ***: <unknown> terminated
+Aborted (core dumped)
+                        </code></pre></p>
+                        <p>The input data is read, and gets stored in <code>char buf[8]</code> variable (Which was only set to hold 8 chars). In the first example, 8 chars are stored, and the code excecutes as predicted. In the second instance, a string longer than 8 chars is passed, resulting in a buffer overflow error.</p>
                         <!-- <img class="col-md-12" src="images/SSD/5.png" alt=""> -->
                         
                     </div><!-- .entry-content -->

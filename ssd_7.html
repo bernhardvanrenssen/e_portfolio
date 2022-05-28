@@ -75,7 +75,48 @@
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p>Enter codio exercises here</p>
+                        <p><strong>Source code provided:</strong></p>
+                        <p><pre><code>
+# code source: https://techmonger.github.io/55/producer-consumer-python/
+ 
+from threading import Thread
+from queue import Queue
+ 
+q = Queue()
+final_results = []
+ 
+def producer():
+    for i in range(100):
+        q.put(i)
+        
+ 
+def consumer():
+    while True:
+        number = q.get()
+        result = (number, number**2)
+        final_results.append(result)
+        q.task_done()
+   
+   
+for i in range(5):
+    t = Thread(target=consumer)
+    t.daemon = True
+    t.start()
+    
+producer()
+ 
+q.join()
+ 
+print (final_results)
+                        </code></pre></p>
+                        <p><strong>How is the queue data structure used to achieve the purpose of the code?</strong></p>
+                        <p>In this instance, the producer is not dependant on the consumer. The Queue() is used to decouple the 2</p>
+                        <p><strong>What is the purpose of q.put(I)?</strong></p>
+                        <p>q.put(i) is used to add items to the Queue (in this case 1 - 100)</p>
+                        <p><strong>What is achieved by q.get()?</strong></p>
+                        <p>q.get() is used to extract items from the Queue, one at a time. These values are then stored in the <code>number</code> var and used further in the function.</p>
+                        <p><strong>What functionality is provided by q.join()?</strong></p>
+                        <p>The q.join() functions by awaiting the process until the Queue has finished its processing</p>
                         <!-- <img class="col-md-12" src="images/SSD/5.png" alt=""> -->
                         
                     </div><!-- .entry-content -->
@@ -108,7 +149,7 @@
 
                     <div class="posted-tags">
                         <label>unit 3</label>
-                        <span><a href="#">Coding exercises</a><a href="#"></a><a href="#"></a> </span>
+                        <span><a href="#">Coding questions, excercise</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
