@@ -71,44 +71,29 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Collaborative Discussion 1: Peer Responses</h1>
+                        <h1>Collaborative Discussion 1: Summary Post</h1>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p><strong>Initial Post by Alberto Rossotto</strong> </p>
-                        <p><strong>Cross Site Request Forgery (CSRF)</strong></p>
-                        <p>A Cross-Site Forgery Attack forces the user to submit data to another website's secure area where he has an active session. The user visits a malicious website and clicks on a link or a button. This action sends an HTTP action directed to another website to trigger an event on behalf of the user. Depending on the design of the targetted website, the HTTP action can be a form, a simple HTTP GET, or a REST call.</p>
-                        <img class="col-md-12" src="images/SSD/2.png" alt="">
-                        <p>Mitigating this kind of attack is usually quite simple. The server must generate a unique token that the client must include in the subsequent request. The server must generate a new token at every exchange. This practice ensures that every client submission corresponds to an initial interaction initiated by the client.</p>
-                        <img class="col-md-12" src="images/SSD/3.png" alt="">
-                        <p>The same-origin policy active in all modern browsers protects the user from this attack when using REST APIs (unless the server explicitly disables it with the CORS header). HTTP GET should never change the server's state and be a possible target. This leaves HTML Forms as the only risk. Many web frameworks can generate safe forms without requiring manual coding. They include the CSRF token as a hidden field and automatically check the token in the submitted data.</p>
-                        <p><strong>REFERENCES</strong></p>
-                        <p>OWASP (N.A.) Cross Site Request Forgery (CSRF). Available from: https://owasp.org/www-community/attacks/csrf [Accessed on 8/03/2022]
-                        </p>
-                        <p></p>
-                        <p><strong>REPLY - Bernhard van Renssen</strong></p>
-                        <p>Hi Alberto 
-
-                            Would it not be possible to inspect the form through the browser's developer tools, and manually remove the hidden field of the input box, which would reveal the token to the user? An attacker could thus change this field:</p>
-                       <code> &lt;input type="hidden" id="token" name="token" value="c319927fd5898ac"&gt; to <br>
-
-                        &lt;input type="" id="token" name="token" value="c319927fd5898ac"&gt; </code>
-                        <p>Would this not expose the token to the potential attacker? With the little experience I have in the banking sector, I have heard that you expose as little as possible to the user in the DOM? I get that there are many processes that have to happen simultaneously to actually create a successful cyber attack, but with many uneducated and weary users that might use the system, chances are that there will be people that click on malicious pop-ups during their banking session.</p>
-                        <p>Might be missing something obvious, just though I would ask if this is how banking forms are actually passing tokens to verify a legitimate transaction?</p>
-                        <p><strong>REPLY - Alberto Rossotto</strong></p>
-                        <p>It is possible to expose the hidden fields in the form. The user would see "weird" fields on the page breaking the page layout, but this would not compromise the security (although the form may become invalid).</p>
-                        <p>You made me realize that this could be the base for a scam by phone.</p>
-                        <p>1.The scammer calls the user and convinces him to open the money transfer page.
+                        <p><strong>Summary Post</strong></p>
+                        <p>As defined by OWASP (2021), Cross-site scripting is an attack that occurs when:</p>
+                        <ul>
+                            <li>Data is entered in a web application from an untrusted source, often a malicious web request.</li>
+                            <li>This data is posted as dynamic content, and sent through to the user without being validated for any malicious content.</li>
+                        </ul>
+                        <p>As discussed in my Initial post, this often happens in the form of a segment of JavaScript (but could also be some form of HTML – or any other code that a browser can execute). Because web applications rely heavy on user-input, it becomes an easy target for attackers performing malicious activities through these input areas. In my initial post I also highlighted several mitigations that a developer can implement to reduce or (hopefully) negate any such malicious script injections. </p>
+                        <p>As I did not have a lot of knowledge prior to this module on security and security vulnerabilities, I did some research on how easy it is to inject scripting on exiting websites. I found an XSS – vulnerability website (https://xss-game.appspot.com/) where I could test out some XSS attacks with various levels of difficulty. Besides being a fun activity, it indeed showcased how easy it is to execute such an attack on poorly developed web applications, by simply using existing input fields. </p>
+                        <p>After reading a peer response by Kei Yui Yvone Chan, I was pointed towards OWASPs Enterprise Security API (ESAPI) that is quite a handy and up-to-date set of tools to prevent any XSS attacks. As a team, I will propose this method as a way to validate input fields in our design application for this module.</p>
+                        <p>A screenshot of a simple XSS attack:</p>
+                        <img class="col-md-12" src="images/SSD/37.png" alt="">
+                        <p><strong>REFERENCES:</strong></p>
+                        <p>Author anon. (2022) Cross Site Scripting (XSS) Attack Tutuorial With Examples. Software Testing Help. [Online]. Available at: https://www.softwaretestinghelp.com/cross-site-scripting-xss-attack-test/
                             <br>
-                            2. The scammer guides the user through the browser's tools to inspect the DOM and extract the CSRF Token.
+                            Marashdih, A.W., Zaaba, Z.F. (2017) Cross Site Scripting: Removing Approaches in Web Application. Procedia Computer Science (124): 647-655
                             <br>
-                            3. The user reveals the CSRF Token to the scammer.
-                            <br>
-                            4. The scammer convinces the user to open another website with a forged form and click on active content.
-                            <br>
-                            5. The form is submitted to the bank abusing the user's open session and is prefilled by the CSRF Token that the scammer got by phone.</p>
-                        <p>Considering how difficult it is to navigate a DOM it seems an unrealistic scenario.</p>
-                        <img class="col-md-12" src="images/SSD/4.png" alt="">
+                            PortSwigger, 2020. Cross-site scripting. [Online]. Available at: https://portswigger.net/web-security/cross-site-scripting [Accessed 14 03 2022].
+                            </p>
+                        
                         
                     </div><!-- .entry-content -->
 
@@ -152,7 +137,7 @@
                     <ul class="flex justify-content-between align-items-center">
                         <li><a href="ssd_1.html"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="ssd_index.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="ssd_2_5.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="ssd_3.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->
