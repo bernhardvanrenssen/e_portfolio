@@ -71,25 +71,34 @@
             <div class="col-12 col-lg-8">
                 <div class="content-area">
                     <header class="entry-header">
-                        <h1>Development Team Project: Coding Output</h1>
-                        <h3>Summative Assessment</h3>
+                        <h1>Evaluation of our final team project (Unit 11) vs Design Proposal (Unit 6)</h1>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
-                        <p><strong>Assignment Brief</strong></p>
-                        <p>Carrying on from the Full Brief provided in Unit 6, this assignment focuses on the second deliverable, a practical development of your design from Unit 6. </p>
-                        <p><strong>Download the CODE on the link below:</strong> </p>
-                        <p><strong><a href="/e_portfolio/final-project-main.rar" >--DOWNLOAD THE SOURCE CODE--</a></strong></p>
-                        <p><strong>README Documentations:</strong></p>
-                        <p><strong><a href="/e_portfolio/CODE - README.md" download>--DOWNLOAD AS TEXT FILE--</a></strong></p>
-                        <p><strong><a href="/e_portfolio/CODE - README.md" >--VIEW ONLINE--</a></strong></p>
-                        <p><strong>Code Presentation:</strong></p>
-                        <p><strong><a href="/e_portfolio/pdf/Final_Presentation.pdf" >--VIEW PRESENTATION--</a></strong></p>
-                        <p><strong>Video of Final Preparation Team Meeting for our Code Live Demonstrations:</strong></p>
-                        <p><strong><a href="https://youtu.be/AIq6f90r0LA" >--WATCH ON YOUTUBE--</a></strong></p>
-                        <p><strong>Minutes of all Team Meetings:</strong></p>
-                        <p><strong><a href="/e_portfolio/pdf/TeamMeetings.pdf" >--VIEW ALL MINUTES--</a></strong></p>
-                        <p><strong>Github Repository:</strong><a href="https://github.com/awesome-ssd-team/final-project"> https://github.com/awesome-ssd-team/final-project</a></p>
+                        <p>As the development of our final Coding assignment of this module progressed, our design document (submitted in Unit 6) acted as a solid blueprint on which our design was built as we received good feedback and marks on it. Even though the ideal was to build the application exactly as set-out in this document – some items were changed and adapted as issues arose with the building the actual application (as happens often in real-world applications). This did not necessarily take away from the functionality of the final output, but rather a re-thinking of implementation of some of the listed deliverables. Listed below is the evaluation and reasons for changes being made:</p>
+                        <p><strong>Scope of design (2.1)</strong></p>
+                        <p>The idea was to build most of the application on Amazon Web Services. Due to the cost of using all the services we wanted to use, we opted to rather use AWS for their MySQL storage (RDS), and add our API code to Google Cloud Platform instead do to GCP offering a free solution for cloud-hosted APIs.</p>
+                        <p><strong>Security Vulnerabilities (2.2.1)</strong></p>
+                        <p>Broken Access Control – Instead of logging all access failures, we only logged users blocked as we felt it unnecessary to list ALL failed access attempts. <br>
+                            Identification and Authentication Failures – No weak password checks were implemented as we felt this to be an overkill as our multi-factor authentication was a strong authentication solution. <br>
+                            Buffer Overflow – No extra measures were put in place as input validation was in-place.
+                        </p>
+                        <p><strong>Trust-based authorization (2.3.2)</strong></p>
+                        <p>Our initial Trust-zone model was not implemented due to time-constraints on building the application to check for IP addresses of logins. We also argued that as this application was to be built with a CL interface, it will only be installed on certain machines in the CERN laboratory, and not be publicly available on remote machines.  </p>
+                        <p>Our Trust model diagram thus changed from this:</p>
+                        <img class="col-md-12" src="images/SSD/38.png" alt="">
+                        <p>To this:</p>
+                        <img class="col-md-12" src="images/SSD/39.png" alt="">
+                        <p><strong>Implementation (2.5)</strong></p>
+                        <p>As we improved out authentication and authorization model, the implementation and process for authenticating a user was slightly adjusted, represented in the below change made in our sequence diagram. Initial:</p>
+                        <img class="col-md-12" src="images/SSD/40.png" alt="">
+                        <p>Adjusted:</p>
+                        <img class="col-md-12" src="images/SSD/41.png" alt="">
+                        <p><strong>Methodology for testing (3.1)</strong></p>
+                        <p>To improve our coverage of testing, we divided our code testing into a further 3 categories: <br>
+                            Unit testing, System integration testing and End-to-end testing. Methods and tools to test were kept as planned in the design document. 
+                        </p>
+
                     </div><!-- .entry-content -->
 
                     <div class="post-share flex align-items-center">
@@ -110,17 +119,17 @@
                     <div class="posted-date">
                         <label>Date</label>
 
-                        <span class="date-format"><a href="#">23 May 2022</a></span>
+                        <span class="date-format"><a href="#">30 May 2022</a></span>
                     </div><!-- .posted-date -->
 
                     <div class="post-category">
                         <label>Project Type</label>
-                        <span><a href="#">Summative Assessment - Coding Output</a></span>
+                        <span><a href="#">Summative Assessment - Evaluation and Retrospect</a></span>
                     </div><!-- .post-category -->
 
                     <div class="posted-tags">
-                        <label>unit 11</label>
-                        <span><a href="#">Code submission, Summative Project, Team Project</a><a href="#"></a><a href="#"></a> </span>
+                        <label>unit 12</label>
+                        <span><a href="#">Evaluation, Comparison, Summative assessment</a><a href="#"></a><a href="#"></a> </span>
                     </div><!-- .entry-meta -->
                 </div><!-- .entry-meta -->
             </aside><!-- .col-md-3 -->
@@ -130,9 +139,9 @@
             <div class="col">
                 <nav class="post-nav">
                     <ul class="flex justify-content-between align-items-center">
-                        <li><a href="ssd_21.html"><img src="images/angle-left.png" alt="Previous"></a></li>
+                        <li><a href="ssd_22.html"><img src="images/angle-left.png" alt="Previous"></a></li>
                         <li><a href="ssd_index.html"><img src="images/portfolio-icon.png" alt="Back to Portfolio"></a></li>
-                        <li><a href="ssd_23.html"><img src="images/angle-right.png" alt="Next"></a></li>
+                        <li><a href="ssd_24.html"><img src="images/angle-right.png" alt="Next"></a></li>
                     </ul>
                 </nav><!-- .post-nav -->
             </div><!-- .col -->
