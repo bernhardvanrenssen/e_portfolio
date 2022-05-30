@@ -1,0 +1,243 @@
+all installed: astroid==2.11.4,attrs==21.4.0,bandit==1.7.4,certifi==2021.10.8,cfgv==3.3.1,charset-normalizer==2.0.12,click==8.1.3,colour==0.1.5,coverage==6.3.2,dill==0.3.4,distlib==0.3.4,et-xmlfile==1.1.0,filelock==3.6.0,gitdb==4.0.9,GitPython==3.1.27,identify==2.5.0,idna==3.3,iniconfig==1.1.1,isort==5.10.1,Jinja2==3.1.2,jsonschema==4.5.1,lazy-object-proxy==1.7.1,MarkupSafe==2.1.1,mccabe==0.7.0,mysql-connector-python==8.0.29,nodeenv==1.6.0,numpy==1.22.3,openpyxl==3.0.9,packaging==21.3,pandas==1.4.2,pbr==5.9.0,Pillow==9.1.0,platformdirs==2.5.2,pluggy==1.0.0,pre-commit==2.19.0,protobuf==3.20.1,py==1.11.0,pylint==2.13.8,pyotp==2.6.0,pyparsing==3.0.8,pyrsistent==0.18.1,pytest==7.1.2,pytest-cov==3.0.0,python-dateutil==2.8.2,python-dotenv==0.20.0,pytz==2022.1,PyYAML==6.0,qrcode==7.3.1,requests==2.27.1,six==1.16.0,smmap==5.0.0,stevedore==3.5.0,styleframe==4.0.0,tabulate==0.8.9,toml==0.10.2,tomli==2.0.1,tox==3.25.0,typing_extensions==4.2.0,urllib3==1.26.9,virtualenv==20.14.1,wrapt==1.14.1,xlrd==1.2.0
+all run-test-pre: PYTHONHASHSEED='3421590497'
+all run-test: commands[0] | dotenv -f .env.test run py.test -v -s --cov-config=.coveragerc --cov=scripts --cov-report=term
+============================= test session starts ==============================
+platform darwin -- Python 3.9.12, pytest-7.1.2, pluggy-1.0.0 -- /Users/laiyinping/Workspaces/University_of_Essex/ssd_assignment/final-project/.tox/all/bin/python
+cachedir: .tox/all/.pytest_cache
+rootdir: /Users/laiyinping/Workspaces/University_of_Essex/ssd_assignment/final-project
+plugins: cov-3.0.0
+collecting ... collected 31 items
+
+tests/amazon_rds_test.py::TestAmazonRDS::test_can_make_connection_to_amazon_rds Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.users table.
+PASSED
+tests/amazon_rds_test.py::TestAmazonRDS::test_required_databases_are_exist PASSED
+tests/amazon_rds_test.py::TestAmazonRDS::test_can_perform_read_operations PASSED
+tests/amazon_rds_test.py::TestAmazonRDS::test_can_perform_insert_operations PASSED
+tests/amazon_rds_test.py::TestAmazonRDS::test_can_perform_update_operations PASSED
+tests/amazon_rds_test.py::TestAmazonRDS::test_can_perform_delete_operations PASSED
+tests/google_cloud_functions_test.py::TestGoogleCloudFunctions::test_google_cloud_functions_heart_beat Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.users table.
+PASSED
+tests/google_cloud_functions_test.py::TestGoogleCloudFunctions::test_google_cloud_functions_register_user PASSED
+tests/main_app_test.py::TestMainApplication::test_register_user [H[2J[H[2JTruncating all user records from the secured_test.users table.
+Truncating all business data records from the secured_test.business_data table.
+Truncating all user records from the backend_test.blocked_session table.
+Truncating all user records from the backend_test.user_login_logs table.
+Truncating all user records from the backend_test.users table.
+Asking for input: Please select a menu: 
+Current input values: ['2', 'John Doe', 'johndoe@gmail.com', 'P@ssw0rd', 'P@ssw0rd', '123456', '123456', 'n', '0']
+Asking for input: Your full name: 
+Current input values: ['John Doe', 'johndoe@gmail.com', 'P@ssw0rd', 'P@ssw0rd', '123456', '123456', 'n', '0']
+Asking for input: Your email: 
+Current input values: ['johndoe@gmail.com', 'P@ssw0rd', 'P@ssw0rd', '123456', '123456', 'n', '0']
+Asking for input: Enter your password: 
+Current input values: ['P@ssw0rd', 'P@ssw0rd', '123456', '123456', 'n', '0']
+Asking for input: Confirm your password: 
+Current input values: ['P@ssw0rd', '123456', '123456', 'n', '0']
+Asking for input: Set a secondary password: 
+Current input values: ['123456', '123456', 'n', '0']
+Asking for input: Confirm your secondary password: 
+Current input values: ['123456', 'n', '0']
+Asking for input: Do you want to set it up now? (y/n): 
+Current input values: ['n', '0']
+Asking for input: Please select a menu: 
+Current input values: ['0']
+PASSED
+tests/main_app_test.py::TestMainApplication::test_user_login [H[2J[H[2J[H[2J[H[2JAsking for input: Please select a menu: 
+Current input values: ['1', 'johndoe@gmail.com', 'P@ssw0rd', '========', '========', '========', '========', '5', '0']
+Asking for input: Enter your email: 
+Current input values: ['johndoe@gmail.com', 'P@ssw0rd', '========', '========', '========', '========', '5', '0']
+Asking for input: Enter your password: 
+Current input values: ['P@ssw0rd', '========', '========', '========', '========', '5', '0']
+Asking for input: Press enter to proceed...
+Current input values: ['========', '========', '========', '========', '5', '0']
+Asking for input: Press enter to continue...
+Current input values: ['========', '========', '========', '5', '0']
+Asking for input: Enter the code: 
+Current input values: ['========', '========', '5', '0']
+Asking for input: Success! Press enter to go to homepage.
+Current input values: ['========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['0']
+PASSED
+tests/main_app_test.py::TestMainApplication::test_add_data [H[2J[H[2J[H[2J[H[2J[H[2JAsking for input: Please select a menu: 
+Current input values: ['1', 'johndoe@gmail.com', 'P@ssw0rd', '========', '========', '1', '1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Enter your email: 
+Current input values: ['johndoe@gmail.com', 'P@ssw0rd', '========', '========', '1', '1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Enter your password: 
+Current input values: ['P@ssw0rd', '========', '========', '1', '1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Enter your MFA code: 
+Current input values: ['========', '========', '1', '1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Hi John! You are logged in! Press any key to continue...
+Current input values: ['========', '1', '1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['1', '1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Enter data value:
+Current input values: ['1234', 'This is sample data!', '========', '5', '0']
+Asking for input: Enter data details:
+Current input values: ['This is sample data!', '========', '5', '0']
+Asking for input: Press any key to proceed: 
+Current input values: ['========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['0']
+PASSED
+tests/main_app_test.py::TestMainApplication::test_update_data [H[2J[H[2J[H[2J[H[2J[H[2JAsking for input: Please select a menu: 
+Current input values: ['1', 'johndoe@gmail.com', 'P@ssw0rd', '========', '========', '2', '1', '1', '4321', '========', '5', '0']
+Asking for input: Enter your email: 
+Current input values: ['johndoe@gmail.com', 'P@ssw0rd', '========', '========', '2', '1', '1', '4321', '========', '5', '0']
+Asking for input: Enter your password: 
+Current input values: ['P@ssw0rd', '========', '========', '2', '1', '1', '4321', '========', '5', '0']
+Asking for input: Enter your MFA code: 
+Current input values: ['========', '========', '2', '1', '1', '4321', '========', '5', '0']
+Asking for input: Hi John! You are logged in! Press any key to continue...
+Current input values: ['========', '2', '1', '1', '4321', '========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['2', '1', '1', '4321', '========', '5', '0']
+Asking for input: Please Enter the Data ID as displayed in the Data View:
+Current input values: ['1', '1', '4321', '========', '5', '0']
+Asking for input: Please Enter 1 or 2: 
+Current input values: ['1', '4321', '========', '5', '0']
+Asking for input: Enter new data value. (Number only): 
+Current input values: ['4321', '========', '5', '0']
+Asking for input: Press any key to proceed: 
+Current input values: ['========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['0']
+PASSED
+tests/main_app_test.py::TestMainApplication::test_download_data [H[2J[H[2J[H[2J[H[2J[H[2JAsking for input: Please select a menu: 
+Current input values: ['1', 'johndoe@gmail.com', 'P@ssw0rd', '========', '========', '4', '========', '5', '0']
+Asking for input: Enter your email: 
+Current input values: ['johndoe@gmail.com', 'P@ssw0rd', '========', '========', '4', '========', '5', '0']
+Asking for input: Enter your password: 
+Current input values: ['P@ssw0rd', '========', '========', '4', '========', '5', '0']
+Asking for input: Enter your MFA code: 
+Current input values: ['========', '========', '4', '========', '5', '0']
+Asking for input: Hi John! You are logged in! Press any key to continue...
+Current input values: ['========', '4', '========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['4', '========', '5', '0']
+Asking for input: Press any key to continue...
+Current input values: ['========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['0']
+['Welcome!\n', '1. Login', '2. Register\n', '0. Exit\n', 'Please select a menu: ', 'Enter your email: ', 'Enter your password: ', 'Welcome John!', 'Enter your MFA code: ', 'Hi John! You are logged in! Press any key to continue...', '========================================', '***Data View***', '========================================', '', '=========================================================================================================================================================', '|Data ID                               Data Value          Data Details                                      Valid  Last Modified                 |', '|-----------------------------------------------------------------------------------------------------------------------------------------------------|', '|4206d065-8ccc-4840-a8c3-d0650e49795a  4321                This is sample data!                              True   Mon, 30 May 2022 08:39:19 GMT |', '=========================================================================================================================================================', '========================================', 'What action you would like to take?', '========================================', '', '1. Add Data', '2. Update Data', '3. Delete Data ', '4. Download Data\n', '5. Logout\n', 'Please select a menu: ', 'No data is available for download', 'Press any key to continue...', '========================================', '***Data View***', '========================================', '', '=========================================================================================================================================================', '|Data ID                               Data Value          Data Details                                      Valid  Last Modified                 |', '|-----------------------------------------------------------------------------------------------------------------------------------------------------|', '|4206d065-8ccc-4840-a8c3-d0650e49795a  4321                This is sample data!                              True   Mon, 30 May 2022 08:39:19 GMT |', '=========================================================================================================================================================', '========================================', 'What action you would like to take?', '========================================', '', '1. Add Data', '2. Update Data', '3. Delete Data ', '4. Download Data\n', '5. Logout\n', 'Please select a menu: ', 'Welcome!\n', '1. Login', '2. Register\n', '0. Exit\n', 'Please select a menu: ']
+PASSED
+tests/main_app_test.py::TestMainApplication::test_delete_data [H[2J[H[2J[H[2J[H[2J[H[2J[H[2JAsking for input: Please select a menu: 
+Current input values: ['1', 'johndoe@gmail.com', 'P@ssw0rd', '========', '========', '3', '1', '========', '5', '0']
+Asking for input: Enter your email: 
+Current input values: ['johndoe@gmail.com', 'P@ssw0rd', '========', '========', '3', '1', '========', '5', '0']
+Asking for input: Enter your password: 
+Current input values: ['P@ssw0rd', '========', '========', '3', '1', '========', '5', '0']
+Asking for input: Enter your MFA code: 
+Current input values: ['========', '========', '3', '1', '========', '5', '0']
+Asking for input: Hi John! You are logged in! Press any key to continue...
+Current input values: ['========', '3', '1', '========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['3', '1', '========', '5', '0']
+Asking for input: Please Enter the Data ID as displayed in the Data View: 
+Current input values: ['1', '========', '5', '0']
+Asking for input: Press any key to proceed: 
+Current input values: ['========', '5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['5', '0']
+Asking for input: Please select a menu: 
+Current input values: ['0']
+['Welcome!\n', '1. Login', '2. Register\n', '0. Exit\n', 'Please select a menu: ', 'Enter your email: ', 'Enter your password: ', 'Welcome John!', 'Enter your MFA code: ', 'Hi John! You are logged in! Press any key to continue...', '========================================', '***Data View***', '========================================', '', '=========================================================================================================================================================', '|Data ID                               Data Value          Data Details                                      Valid  Last Modified                 |', '|-----------------------------------------------------------------------------------------------------------------------------------------------------|', '|4206d065-8ccc-4840-a8c3-d0650e49795a  4321                This is sample data!                              True   Mon, 30 May 2022 08:39:19 GMT |', '=========================================================================================================================================================', '========================================', 'What action you would like to take?', '========================================', '', '1. Add Data', '2. Update Data', '3. Delete Data ', '4. Download Data\n', '5. Logout\n', 'Please select a menu: ', 'LIST OF CURRENT DATA ENTRIES:', '', '============================================================================================================================================================', '|ID        Data ID                               Data Value          Data Details                                      Valid  Last Modified         |', '|--------------------------------------------------------------------------------------------------------------------------------------------------------|', '|1         4206d065-8ccc-4840-a8c3-d0650e49795a  4321                This is sample data!                              Mon, 30 May 2022 08:39:19 GMT |', '============================================================================================================================================================', 'Which data entry do you want to delete?', 'Please Enter the Data ID as displayed in the Data View: ', '', 'Data id 4206d065-8ccc-4840-a8c3-d0650e49795a is deleted by user 1!', 'Press any key to proceed: ', '========================================', '***Data View***', '========================================', '', '=========================================================================================================================================================', '|Data ID                               Data Value          Data Details                                      Valid  Last Modified                 |', '|-----------------------------------------------------------------------------------------------------------------------------------------------------|', '|4206d065-8ccc-4840-a8c3-d0650e49795a  4321                This is sample data!                              True   Mon, 30 May 2022 08:39:19 GMT |', '=========================================================================================================================================================', '========================================', 'What action you would like to take?', '========================================', '', '1. Add Data', '2. Update Data', '3. Delete Data ', '4. Download Data\n', '5. Logout\n', 'Please select a menu: ', 'Welcome!\n', '1. Login', '2. Register\n', '0. Exit\n', 'Please select a menu: ']
+PASSED
+tests/cloud_functions_api/add_data_test.py::TestAddData::test_add_data Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.blocked_session table.
+Truncating all user records from the backend_test.user_login_logs table.
+Truncating all user records from the backend_test.users table.
+Creating a fake user record to the secured_test.users table.
+DEBUG 
+        INSERT INTO secured_test.business_data
+            (data_id, user_id, data_value, data_details, is_valid, last_modified)
+        VALUES
+            ('ac3f121c-bdf5-49d8-9798-3e2ab94f8420',1,3,'This is sample data',1,'2022-05-30 16:39:44');
+        
+PASSED
+tests/cloud_functions_api/add_data_test.py::TestAddData::test_add_data_with_non_existing_user DEBUG 
+        INSERT INTO secured_test.business_data
+            (data_id, user_id, data_value, data_details, is_valid, last_modified)
+        VALUES
+            ('dc870058-b925-44c6-a286-c27463c5cab8',2,4,'This is sample data',1,'2022-05-30 16:39:47');
+        
+PASSED
+tests/cloud_functions_api/register_user_test.py::TestRegisterUser::test_main_with_non_registered_email_address Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.users table.
+PASSED
+tests/cloud_functions_api/register_user_test.py::TestRegisterUser::test_main_with_an_registered_email_address PASSED
+tests/cloud_functions_api/retrieve_data_test.py::TestRetrieveData::test_retrieve_data Truncating all user records from the secured_test.users table.
+Truncating all business data records from the secured_test.business_data table.
+Truncating all user records from the backend_test.blocked_session table.
+Truncating all user records from the backend_test.user_login_logs table.
+Truncating all user records from the backend_test.users table.
+Creating a fake business data record to the secured_test.business_data table.
+Creating a fake user record to the secured_test.users table.
+PASSED
+tests/cloud_functions_api/retrieve_data_test.py::TestRetrieveData::test_retrieve_data_with_non_existing_user PASSED
+tests/cloud_functions_api/setup_otp_test.py::TestSetupOTP::test_setup_otp Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.users table.
+Creating a fake user record to the secured_test.users table.
+PASSED
+tests/cloud_functions_api/setup_otp_test.py::TestSetupOTP::test_setup_otp_with_non_existing_user PASSED
+tests/cloud_functions_api/update_data_test.py::TestUpdateData::test_update_data_with_unsupported_action Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.blocked_session table.
+Truncating all user records from the backend_test.user_login_logs table.
+Truncating all user records from the backend_test.users table.
+Creating a fake business data record to the secured_test.business_data table.
+Creating a fake user record to the secured_test.users table.
+PASSED
+tests/cloud_functions_api/update_data_test.py::TestUpdateData::test_updating_the_data_value PASSED
+tests/cloud_functions_api/update_data_test.py::TestUpdateData::test_updating_the_data_details PASSED
+tests/cloud_functions_api/update_data_test.py::TestUpdateData::test_marking_delete PASSED
+tests/cloud_functions_api/user_login_test.py::TestUserLogin::test_user_login_with_valid_credentials Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.blocked_session table.
+Truncating all user records from the backend_test.user_login_logs table.
+Truncating all user records from the backend_test.users table.
+Creating a fake user record to the secured_test.users table.
+PASSED
+tests/cloud_functions_api/user_login_test.py::TestUserLogin::test_user_login_with_invalid_email_address PASSED
+tests/cloud_functions_api/user_login_test.py::TestUserLogin::test_user_has_exceeded_login_attempt Trying to login with 1 attempt.
+attempt_made: 0
+Trying to login with 2 attempt.
+attempt_made: 0
+Trying to login with 3 attempt.
+attempt_made: 0
+Trying to login with 4 attempt.
+attempt_made: 1
+PASSED
+tests/cloud_functions_api/verify_otp_test.py::TestVerifyOTP::test_when_tfa_secret_is_saved Truncating all user records from the secured_test.users table.
+Truncating all user records from the backend_test.users table.
+Creating a fake user record to the secured_test.users table.
+PASSED
+tests/cloud_functions_api/verify_otp_test.py::TestVerifyOTP::test_setup_otp_with_non_existing_user PASSED
+
+---------- coverage: platform darwin, python 3.9.12-final-0 ----------
+Name                                           Stmts   Miss  Cover
+------------------------------------------------------------------
+scripts/MainApp.py                               403     69    83%
+scripts/cloud_functions_api/add_data.py           25      0   100%
+scripts/cloud_functions_api/register_user.py      25      0   100%
+scripts/cloud_functions_api/retrieve_data.py      17      0   100%
+scripts/cloud_functions_api/setup_otp.py          18      0   100%
+scripts/cloud_functions_api/update_data.py        34      0   100%
+scripts/cloud_functions_api/user_login.py         56      0   100%
+scripts/cloud_functions_api/verify_otp.py         20      0   100%
+------------------------------------------------------------------
+TOTAL                                            598     69    88%
+
+
+======================== 31 passed in 237.92s (0:03:57) ========================
+___________________________________ summary ____________________________________
+  all: commands succeeded
+  congratulations :)
